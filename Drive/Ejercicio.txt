@@ -1,0 +1,66 @@
+/---------------------------------------------------------------------------/
+p = presión
+q = densidad
+t = temperatura ambiente
+
+
+A(x) = x aumenta
+D(x) = x disminuye
+
+D(p) ⊃ A(t)
+Si la presión disminuye entonces aumenta la temperatura ambiente.
+
+A(t) ⊃ A(q)
+Si la temperatura ambiente aumenta entonces aumenta la densidad del aire.
+
+D(p) ⊃ A(q)
+Si la presión disminuye entonces aumenta la densidad del aire.
+
+(D(p) ⊃ A(t) ^ A(t) ⊃ A(q)) ⊃ (D(p) ⊃ A(q))
+/---------------------------------------------------------------------------/
+p = Tengo fiebre
+Tengo fiebre.
+/---------------------------------------------------------------------------/
+n = numero
+P(x) = x es primo.
+M(x) = x es mayor que dos.
+I(x) = x es impar.
+
+(P(n) ^ M(n)) ⊃ I(n)
+
+Que n sea primo y mayor que 2 es suficiente para afirmar que n es impar.
+/----------------------------------------------------------------------------/
+p = 8
+q = amigas
+C = ir a cine.
+J = esta de juerga.
+D(x) = me dira que siempre x.
+L(x) = estar listo a las x.
+A(x) = ire con x.
+
+¬L(p) ⊃ ((¬C ^ A(q)) ⊃ D(J))
+
+Si no estás listo a las 8 no iremos al cine y me ire con mis amigas. 
+Y por culpa de esto, me dirás que siempre estoy de juerga.
+/----------------------------------------------------------------------------/
+a = agapito es inocente
+b = bartolo es inocente
+h = hilario es inocente
+
+ a ⊃  (a ^ h)
+ b ⊃ ¬(a ^ h)
+ h ⊃  (a)
+
+¬a ⊃ ¬(a ^ h) ^ (b ^ h)
+¬b ⊃  (a ^ h)
+¬h ⊃ ¬(a) ^ (a ^ b)
+
+En un interrogatorio por el robo de un examen, el profesor interroga a 
+los tres alumnos sospechosos, que le responden como sigue:
+
+Agapito: Ni Hilario ni yo hemos sido
+Bartolo: Agapito está  mintiendo
+Hilario: Agapito no es el ladrón
+
+Suponiendo que sólo hay un culpable, y que los inocentes dicen la verdad, 
+¿se puede deducir cuál de los alumnos es el ladrón?

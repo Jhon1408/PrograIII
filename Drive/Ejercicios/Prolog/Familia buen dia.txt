@@ -1,0 +1,103 @@
+hombre('Nicanor Ulloa').
+hombre('José Arcadio Buendía').
+hombre('José Arcadio').
+hombre('Aureliano').
+hombre('Arcadio').
+hombre('Aureliano José').
+hombre('Fernando del Carpio').
+hombre('17 Aurelianos').
+hombre('José Arcadio Segundo').
+hombre('Aureliano Segundo').
+hombre('Gastón').
+hombre('José Arcadio1').
+hombre('Mauricio Babilonia').
+hombre('Aureliano Babilonia').
+hombre('Aureliano1').
+
+mujer('Rebeca Montiel').
+mujer('Úrsula Iguarán').
+mujer('Rebeca').
+mujer('Pilar Temera').
+mujer('Remedios moscote').
+mujer('Amaranta').
+mujer('Santa Sofia de la Piedad').
+mujer('Renata Argote').
+mujer('Remedios').
+mujer('Petra Cotes').
+mujer('Fernanda del Carpio').
+mujer('Amaranta Úrsula').
+mujer('Renata Remedios').
+
+
+progenitor('Nicanor Ulloa','Rebeca').
+progenitor('Rebeca Montiel','Rebeca').
+progenitor('José Arcadio Buendía','José Arcadio').
+progenitor('Úrsula Iguarán','José Arcadio').
+progenitor('José Arcadio Buendía','Aureliano').
+progenitor('Úrsula Iguarán','Aureliano').
+progenitor('José Arcadio Buendía','Amaranta').
+progenitor('Úrsula Iguarán','Amaranta').
+progenitor('José Arcadio Buendía','Aureliano').
+progenitor('Úrsula Iguarán','Aureliano').
+progenitor('José Arcadio','Arcadio').
+progenitor('Pilar Temera','Arcadio').
+progenitor('Pilar Temera','Aureliano José').
+progenitor('Aureliano','Aureliano José').
+progenitor('Santa Sofia de la Piedad','Remedios').
+progenitor('Santa Sofia de la Piedad','José Arcadio Segundo').
+progenitor('Santa Sofia de la Piedad','Aureliano Segundo').
+progenitor('Arcadio','Remedios').
+progenitor('Arcadio','José Arcadio Segundo').
+progenitor('Arcadio','Aureliano Segundo').
+progenitor('Aureliano Segundo','José Arcadio1').
+progenitor('Fernanda del Carpio','José Arcadio1').
+progenitor('Aureliano Segundo','Amaranta Úrsula').
+progenitor('Fernanda del Carpio','Amaranta Úrsula').
+progenitor('Aureliano Segundo','Renata Remedios').
+progenitor('Fernanda del Carpio','Renata Remedios').
+progenitor('Amaranta Úrsula','Aureliano1').
+progenitor('Aureliano Babilonia','Aureliano1').
+progenitor('Renata Remedios','Aureliano Babilonia').
+progenitor('Mauricio babilonia','Aureliano Babilonia').
+progenitor('Aureliano','17 Aurelianos').
+progenitor('Fernando del Carpio','Fernanda del Carpio').
+progenitor('Renata Argote','Fernanda del Carpio').
+
+
+esposos('José Arcadio Buendiía','Úrsula Iguarán').
+esposos('Nicanor Ulloa','Rebeca Montiel').
+esposos('Rebeca' ,'José Arcadio').
+esposos('Pilar Temera','José Arcadio').
+esposos('Pilar Temera','Aureliano').
+esposos('Remedios Moscotes','Aureliano').
+esposos('Santa Sofia de la Piedad','Arcadio').
+esposos('Petra Cotes','Aureliano Segundo').
+esposos('Fernando del Carpio','Renata Argote').
+esposos('Aureliano Segundo','Fernanda del Carpio').
+esposos('Gastón','Amaranta Úrsula').
+esposos('Mauricio Babilonia','Renata Remedios').
+esposos('Amaranta Úrsula','Aureliano Babilonia').
+
+diferente(A,B):- A\==B.
+padre(A,B):- progenitor(A,B),hombre(A).
+madre(A,B):- progenitor(A,B),mujer(A).
+hijo(A,B):- padre(B,A),hombre(B).
+hija(A,B):- madre(B,A),mujer(B).
+hermanos(A,B):- padre(Z,A),padre(Z,B),A\==B.
+sobrino(A,B):- hijo(A,C),hermanos(C,B),hombre(A).
+sobrina(A,B):- hija(A,C),hermanos(C,B),mujer(A).
+tio(A,B):- (padre(C,B);madre(C,B)), hermanos(C,A), hombre(A).
+tia(A,B):- (madre(C,B);padre(C,B)), hermanos(C,A), mujer(A).
+abuelo(A,B):- padre(A,C),padre(C,B), hombre(A).
+abuelo(A,B):- padre(A,C),madre(C,B), hombre(A).
+abuela(A,B):- madre(A,C),padre(C,B), mujer(A).
+abuela(A,B):- madre(A,C),madre(C,B), mujer(A).
+nuera(A,B):- (padre(B,C); madre(B,C)),esposos(A,C),mujer(A).
+yerno(A,B):- (padre(B,C); madre(B,C)),esposos(A,C),hombre(A).
+primo(A,B):- padre(C,A),tio(C,B),hombre(A).
+nieto(A,B):- (padre(B,C); madre(B,C)),(padre(C,A); madre(C,A)),hombre(A).
+nieta(A,B):- (padre(B,C); madre(B,C)),(padre(C,A); madre(C,A)),mujer(A).
+cuñados(A,B):- esposos(B,C),hermanos(A,C).
+suegros(A,B):- (padre(A,C); madre(A,C)),esposos(B,C).
+bisabuelos(A,B):- (padre(A,C); madre(A,C)), (abuelo(C,B);abuela(C,B)).
+tatarabuelos(A,B):- (padre(A,C); madre(A,C)),(bisabuelos(C,B)).

@@ -1,0 +1,53 @@
+progenitor(clara,jose).
+true.
+-------------------------------------
+progenitor(Y,jose).
+Y = clara ;
+Y = tomas.
+
+progenitor(Los_padres_son,jose).
+Los_padres_son = clara ;
+Los_padres_son = tomas.
+-------------------------------------
+progenitor(X,Y).
+X = clara,
+Y = jose ;
+X = tomas,
+Y = jose ;
+X = tomas,
+Y = isabel ;
+X = jose,
+Y = ana ;
+X = jose,
+Y = patricia ;
+X = patricia,
+Y = jaime.
+-------------------------------------
+Realice la base del conocimiento de la siguiente figura
+-------------------------------------
+Encuentre los bisabuelos de jaime
+ progenitor(X,jaime),progenitor(Y,X),progenitor(Visabuelos,Y).
+X = patricia,
+Y = jose,
+Visabuelos = clara ;
+X = patricia,
+Y = jose,
+Visabuelos = tomas.
+-------------------------------------
+Encuentre los abuelos patricia
+ progenitor(X,patricia),progenitor(Abuelos,X).
+X = jose,
+Abuelos = clara ;
+X = jose,
+Abuelos = tomas.
+------------------------------------
+Quien es el progenitor de Patricia
+ progenitor(X,patricia).
+X = jose.
+-----------------------------------
+ Tiene Isabel un hijo o una hija?
+ progenitor(isabel,X).
+ ------------------------------------
+ Realice una investigación sobre el backtring en prolog
+
+
