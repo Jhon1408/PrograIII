@@ -18,7 +18,7 @@ pyDatalog.create_terms('W,X,Y,Z,padre,madre,hermano_de,Hermano1,Hermano2,Padre,M
 # hermano_de(Hermano1,Hermano2) :- padre(Padre,Hermano1), padre(Padre,Hermano2), 
 #   madre(Madre,Hermano1), madre(Madre,Hermano2), Hermano1\=Hermano2.
 
-hermano_de(Hermano1,Hermano2) <= padre(Padre,Hermano1)& padre(Padre,Hermano2)& madre(Madre,Hermano1)& madre(Madre,Hermano2)& (Hermano1!=Hermano2)
+hermano_de(Hermano1,Hermano2) <= padre(Padre,Hermano1) & padre(Padre,Hermano2) & madre(Madre,Hermano1) & madre(Madre,Hermano2) & (Hermano1!=Hermano2)
 
 # nombre_hermano=raw_input('Ingrese el nombre del hermano que desea buscar:')
 # print('El/Los herman@s de ' + nombre_hermano  + ' son: ' )
@@ -28,7 +28,7 @@ hermano_de(Hermano1,Hermano2) <= padre(Padre,Hermano1)& padre(Padre,Hermano2)& m
 
 # REGLA PARA HERMANOS CON SINTAXIS PYDATALOG
 def pedir_por_pantalla():
-  nombre_hermano=raw_input('Ingrese el nombre del hermano que desea buscar:')
+  nombre_hermano=input('Ingrese el nombre del hermano que desea buscar:')
   return nombre_hermano
 
 def usar_regla(nombre_hermano):
